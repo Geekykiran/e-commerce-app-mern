@@ -2,14 +2,19 @@ import { Schema, model } from "mongoose";
 
 let cartSchema = new Schema(
   {
-    products: [{ product:Schema.Types.ObjectId,quantity:Number }],
+    products: [
+      {
+        product: { type: Schema.Types.ObjectId, ref: "Product", required: true },
+        quantity: { type: Number, required: true, default: 1 },
+      }
+    ],
     totalPrice: {
       type: Number,
       default: 0,
     },
     user: {
       type: Schema.Types.ObjectId,
-      // ref: "User",
+      ref: "User",
       required: true,
     },
   },
@@ -19,6 +24,6 @@ let cartSchema = new Schema(
 
 
 
-const Cart=model("Cart",cartSchema)
+const Cart = model("Cart", cartSchema)
 
 export default Cart;

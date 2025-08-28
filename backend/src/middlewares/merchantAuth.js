@@ -1,7 +1,7 @@
 import Merchant from "../models/merchant.model.js";
 import jwt from "jsonwebtoken";
 
-export const auth = async (req, res, next) => {
+export const merchantAuth = async (req, res, next) => {
   try {
     let token = req.headers?.authorization?.split(" ")[1];
     if (!token) {
